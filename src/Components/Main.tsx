@@ -50,8 +50,9 @@ const ToDoComponent:React.FC=()=>{
         setTodoDate(newArray);
     }
     //ф-я возврата предыдущего ToDoList
-    const changeRestart=()=>{
-        setTodoDataForChange(todoData);
+    const changeRestart=(id:number)=>{
+        setTodoDataForChange(todoData.filter((el)=>el.id===id))
+
     }
     //удалить ToDoList
     const deleteItem=(id:number)=>{
