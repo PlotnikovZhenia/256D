@@ -1,0 +1,46 @@
+.newTodo {
+    width: 350px;
+    margin: 20px;
+    padding: 25px;
+    text-align: center;
+    background: #b28ec1;
+}
+.addHeading{
+    display: flex;
+    justify-content: space-between;
+}
+.addTodoImage{
+    width: 30px;
+}
+.newTitle {
+    display: block;
+}
+.AddShowing{
+    display:block;
+}
+.AddUnShowing{
+    display: none;
+}
+.windowAddToDo {
+    width: 400px;
+    height: 100px;
+    text-align: center;
+    padding: 15px;
+    border: 3px solid #d7dfd8;
+    border-radius: 10px;
+    color: #f1eff1;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background-color: #9e9e9e;
+  }
+  .windowAddNone{
+    display: none;
+  }
+  .windowAddToDo button{
+    width:100px
+  }

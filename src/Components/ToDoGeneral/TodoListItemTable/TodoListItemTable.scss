@@ -1,0 +1,25 @@
+.todoItemList {
+    display: flex;
+    justify-content: space-between;
+    background-color: blueviolet;
+    padding: 20px;
+}
+.todoItemList input {
+    width: 30px;
+    margin: 20px;
+}
+.labelShowing{
+    display:block;
+    background-color: #b7b1d5;
+    padding: 20px;
+}
+.labelUnShowing{
+    display: none;
+}
+.itemDone{
+    text-decoration: line-through;
+}
+.linkChange {
+    width: 30px;
+    margin: 20px 5px;
+}

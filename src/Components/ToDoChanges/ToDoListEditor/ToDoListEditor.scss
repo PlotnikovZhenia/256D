@@ -1,0 +1,42 @@
+.todoItemList button{
+        height: 30px;
+        margin: 20px;
+}
+.labelShowing button{
+        margin-left: 10px;
+}
+.editorButtons{
+        display: flex;
+}
+.editorButtons button {
+        height: 30px;
+        background-color: burlywood;
+        margin: 10px;
+}
+.titleChangeStyle{
+        margin: 20px 40px;
+}
+.windowDeleteToDo {
+        width: 400px;
+        height: 100px;
+        text-align: center;
+        padding: 15px;
+        border: 3px solid #d7dfd8;
+        border-radius: 10px;
+        color: #f1eff1;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        background-color: #9e9e9e;
+      }
+.windowDeleteNone{
+        display: none;
+}
+.windowDeleteToDo button{
+        margin: 10px;
+        width: 100px;
+}
