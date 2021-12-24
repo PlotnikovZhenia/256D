@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import ToDoGeneral from "./ToDoGeneral/ToDoGeneral";
 import ToDoChanges from "./ToDoChanges/ToDoChanges";
 import Error from './Error';
@@ -10,10 +10,23 @@ interface IToDo{
     label:any[]
 }
 
+function getSessionStorageOrDefault(key:string, defaultValue:any[]) {
+    const stored = sessionStorage.getItem(key);
+    if (!stored) {
+      return defaultValue;
+    }
+    return JSON.parse(stored);
+  }
+
 const ToDoComponent:React.FC=()=>{
-    const [todoData,setTodoDate]=useState<IToDo[]>([
-        {id:Date.now(), title:'React', label:[{id:Date.now()+1,item:'State',done:true,permitTextChange:false},{id:Date.now()+2,item:'Virtual Dom',done:true,permitTextChange:false},{id:Date.now()+3,item:'Fragment', done:false,permitTextChange:false},{id:Date.now()+4,item:'Context',done:false,permitTextChange:false},{id:Date.now()+5,item:'Props',done:false,permitTextChange:false}]}
-    ]); 
+    const [todoData,setTodoDate]=useState<IToDo[]>(
+        getSessionStorageOrDefault('terms', [
+            {id:Date.now(), title:'React', label:[{id:Date.now()+1,item:'State',done:true,permitTextChange:false},{id:Date.now()+2,item:'Virtual Dom',done:true,permitTextChange:false},{id:Date.now()+3,item:'Fragment', done:false,permitTextChange:false},{id:Date.now()+4,item:'Context',done:false,permitTextChange:false},{id:Date.now()+5,item:'Props',done:false,permitTextChange:false}]}
+        ])
+        ); 
+    useEffect(() => {
+        sessionStorage.setItem('terms', JSON.stringify(todoData));
+        }, [todoData]);
     const [todoDataForChange,setTodoDataForChange]=useState<IToDo[]>([]); 
     const pushAll=(newtitle:string,arr:any[])=>{
         let newTodolist={
