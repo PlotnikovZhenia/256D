@@ -20,7 +20,8 @@ const AddNewItemList=({addListToTitle,restart,windowAddPush}:IAddTitle)=>{
         let itemNew={
             id:Date.now(),
             item:textItem,
-            done:checked
+            done:checked,
+            permitTextChange:false
         }
         setTextItemList([...textItemList,itemNew]);
         setTextItem('');
@@ -31,7 +32,8 @@ const AddNewItemList=({addListToTitle,restart,windowAddPush}:IAddTitle)=>{
             let itemNew={
                 id:Date.now(),
                 item:textItem,
-                done:checked
+                done:checked,
+                permitTextChange:false
             }
             addListToTitle([...textItemList,itemNew]);
             windowAddPush();
@@ -39,7 +41,8 @@ const AddNewItemList=({addListToTitle,restart,windowAddPush}:IAddTitle)=>{
             let itemNew={
                 id:Date.now(),
                 item:textItem,
-                done:checked
+                done:checked,
+                permitTextChange:false
             }
             addListToTitle([...textItemList,itemNew]);
             windowAddPush();

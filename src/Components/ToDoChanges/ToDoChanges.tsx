@@ -1,18 +1,23 @@
 import ToDoListEditor from './ToDoListEditor/ToDoListEditor';
 import NothingToChange from './NothingToChange/NothingToChange';
 import './ToDoChanges.scss';
-import { useState } from 'react';
 
 interface IToDoChanges{
     todoDataForChange:any[],
+    pushTitleChanged:(text:string)=>void,
+    saveChangesAll:()=>void,
+    changeRestart:()=>void,
     onDeleted:(id:number)=>void,
-    changeDone:(id:number,done:boolean)=>void
+    changeText:(id:number,permitTextChange:boolean)=>void,
+    changeTitleInLabel:(id:number,text:string)=>void,
+    changeDone:(id:number,done:boolean)=>void,
+    deleteThisItem:(id:number)=>void
 }
-const ToDoChanges=({todoDataForChange,changeDone, onDeleted}:IToDoChanges)=>{
+const ToDoChanges=({todoDataForChange,pushTitleChanged, saveChangesAll, changeRestart, changeTitleInLabel,changeText,changeDone, deleteThisItem, onDeleted}:IToDoChanges)=>{
     const elements=todoDataForChange.map((item)=>{
         const { id, ...itemProps  } = item;
         return (
-            <ToDoListEditor {...itemProps} key={id} changeDone={changeDone} onDeleted={()=>onDeleted(id)}/>
+            <ToDoListEditor {...itemProps} key={id}changeText={changeText} saveChangesAll={saveChangesAll}  changeRestart={changeRestart} pushTitleChanged={pushTitleChanged} changeTitleInLabel={changeTitleInLabel}  changeDone={changeDone} deleteThisItem={deleteThisItem} onDeleted={()=>onDeleted(id)}/>
         );
     })
     return(

@@ -7,10 +7,9 @@ import './change.svg';
 interface IToDo{
     title:string,
     label:any[],
-    onchangeToDoList:()=>void,
-    onDeleted:()=>void
+    onchangeToDoList:()=>void
 }
-const TodoListTable=({title,label,onchangeToDoList,onDeleted}:IToDo)=>{
+const TodoListTable=({title,label,onchangeToDoList,}:IToDo)=>{
     const [shomList,setShowList]=useState(false)
     const labelElements=label.map((element)=>{
         const{id,item,done}=element;
