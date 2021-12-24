@@ -9,7 +9,7 @@ interface IToDo{
     title:string,
     label:any[]
 }
-
+//получение sessionStorage (сохранени инфы после перезагрузки)
 function getSessionStorageOrDefault(key:string, defaultValue:any[]) {
     const stored = sessionStorage.getItem(key);
     if (!stored) {
@@ -28,6 +28,7 @@ const ToDoComponent:React.FC=()=>{
         sessionStorage.setItem('terms', JSON.stringify(todoData));
         }, [todoData]);
     const [todoDataForChange,setTodoDataForChange]=useState<IToDo[]>([]); 
+    //добавляем ToDoList
     const pushAll=(newtitle:string,arr:any[])=>{
         let newTodolist={
             id:Date.now(),
@@ -36,24 +37,29 @@ const ToDoComponent:React.FC=()=>{
         }
         setTodoDate([...todoData,newTodolist])
     }
+    //ф-я для работы с режимом изменений
     const onchangeToDoList=(id:number)=>{
         console.log(id);
         setTodoDataForChange(todoData.filter((el)=>el.id===id))
     }
+    //ф-я сохранения всех изменений 
     const saveChangesAll=()=>{
         let concatArrayBefore=todoData.filter((el)=>el.id<todoDataForChange[0].id);
         let concatArrayAfter=todoData.filter((el)=>el.id>todoDataForChange[0].id);
         let newArray=concatArrayBefore.concat(todoDataForChange,concatArrayAfter);
         setTodoDate(newArray);
     }
+    //ф-я возврата предыдущего ToDoList
     const changeRestart=()=>{
         setTodoDataForChange(todoData);
     }
+    //удалить ToDoList
     const deleteItem=(id:number)=>{
         console.log(id)
         setTodoDate(todoData.filter((el)=>el.id!=id));
         setTodoDataForChange([])
     }
+    //ф-я сохранения изменений заголовка ToDoList в режиме изминений
     const pushTitleChanged=(text:string)=>{
         let newTodolist:any={
             id:todoDataForChange[0].id,
@@ -62,6 +68,7 @@ const ToDoComponent:React.FC=()=>{
         }
        setTodoDataForChange([newTodolist])
     }
+    //ф-я для появления input с возможностью изменения заголовка пункта ToDoList в режиме изминений
     const changeText=(id:number,permitTextChange:boolean)=>{
         let searchLabel=todoDataForChange[0].label.filter((el)=>el.id===id);
         let newLabel={
@@ -79,6 +86,7 @@ const ToDoComponent:React.FC=()=>{
         }
         setTodoDataForChange([newTodolist]);
     }
+    //ф-я изменения заголовка выбраного пункта ToDoList
     const changeTitleInLabel=(id:number,text:string)=>{
         let searchLabel=todoDataForChange[0].label.filter((el)=>el.id===id);
         let newLabel={
@@ -96,6 +104,7 @@ const ToDoComponent:React.FC=()=>{
         }
         setTodoDataForChange([newTodolist]);
     }
+    //ф-я изменения статуса исполняемости пункта ToDoList
     const changeDone=(id:number,done:boolean)=>{
         let searchLabel=todoDataForChange[0].label.filter((el)=>el.id===id);
         let newLabel={
@@ -113,6 +122,7 @@ const ToDoComponent:React.FC=()=>{
         }
         setTodoDataForChange([newTodolist]);
     }
+    //ф-я удаления пункта ToDoList
     const deleteThisItem=(id:number)=>{
         let searchLabel=todoDataForChange[0].label.filter((el)=>el.id!=id);
         let newTodolist:any={
